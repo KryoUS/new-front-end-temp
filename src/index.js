@@ -4,10 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import orange from '@material-ui/core/colors/orange';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#4A00E0",
+    },
+    secondary: {
+      main: orange[500],
+    },
+    type: 'dark'
+  },
+});
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>,
   document.getElementById('root')
 );
 
