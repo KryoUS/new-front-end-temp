@@ -5,6 +5,7 @@ import CheckRounded from '@material-ui/icons/CheckRounded';
 import CheckCircle from '@material-ui/icons/CheckCircle';
 import ClearRounded from '@material-ui/icons/ClearRounded';
 import Error from '@material-ui/icons/Error';
+import Grid from '@material-ui/core/Grid';
 
 export default class RealmStatus extends React.Component{
     constructor(){
@@ -25,23 +26,28 @@ export default class RealmStatus extends React.Component{
 
     render(){
         return(
-            <Typography style={{display: "flex", alignItems: "center"}}>
-            Realm: {this.state.realmInfo.status ? 
-            <CheckRounded 
-            fontSize="small" 
-            style={{color: "#AAFF00"}} /> 
-            : 
-            <Error 
-            color="error" 
-            fontSize="small" /> } | Queue: {this.state.realmInfo.has_queue ? 
-            <CheckCircle 
-            color="secondary" 
-            fontSize="small" /> 
-            : 
-            <ClearRounded 
-            fontSize="small"
-            style={{color: "#AAFF00"}} /> }
-        </Typography>
+            <>
+                <Typography style={{display: "flex", justifyContent: "space-evenly", alignItems: "center"}}>
+                    Realm: {this.state.realmInfo.status ? 
+                        <CheckRounded 
+                        fontSize="small" 
+                        style={{color: "#AAFF00"}} /> 
+                    : 
+                        <Error 
+                        color="error" 
+                        fontSize="small" /> }
+                </Typography>
+                <Typography style={{display: "flex", justifyContent: "space-evenly", alignItems: "center"}}>
+                    Queue: {this.state.realmInfo.has_queue ? 
+                        <CheckCircle 
+                        color="secondary" 
+                        fontSize="small" /> 
+                    : 
+                        <ClearRounded 
+                        fontSize="small"
+                        style={{color: "#AAFF00"}} /> }
+                </Typography>
+            </>
         )
     }
 }
