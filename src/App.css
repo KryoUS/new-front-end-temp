@@ -1,9 +1,10 @@
 .App {
   text-align: center;
-  background: #212121; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* background: #212121; fallback for old browsers */
+  /* background: -webkit-linear-gradient(to bottom, #4A00E0, #8E2DE2);  Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to bottom, #4A00E0, #8E2DE2); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 100vh;
+  background-color: #121212;
 }
 
 .App-logo {
@@ -17,19 +18,8 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
-  color: #61dafb;
+  /* color: #61dafb; */
 }
 
 @keyframes App-logo-spin {
@@ -40,3 +30,21 @@
     transform: rotate(360deg);
   }
 }
+
+.wowhead-tooltip td, .wowhead-tooltip th {
+  background: #1A1A1A;
+}
+
+.wowhead-tooltip table, .wowhead-tooltip td, .wowhead-tooltip th, .wowhead-tooltip tbody {
+  border: none !important; 
+}
+
+.wowhead-tooltip {
+  border: 1px solid black !important;
+  box-shadow: 2px 2px 8px #000000 !important;
+}
+
+/* .wowhead-tooltip p {
+  left: 275px !important;
+  top: 2px !important;
+} */
