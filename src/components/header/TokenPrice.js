@@ -23,8 +23,8 @@ export default class TokenPrice extends React.Component{
     render(){
         return(
             <Button
-            variant="outlined"
-            size="small" 
+            variant="text"
+            size="medium" 
             href="https://us.shop.battle.net/en-us/product/world-of-warcraft-token" 
             data-wowhead="item=122284" 
             target="_blank" 
