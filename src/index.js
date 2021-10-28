@@ -5,17 +5,40 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import orange from '@material-ui/core/colors/orange';
 
 const theme = createTheme({
   palette: {
+    type: 'dark',
     primary: {
-      main: "#4A00E0",
+      main: '#1a1a1a',
     },
     secondary: {
-      main: orange[500],
+      main: '#b388ff',
+      contrastText: '#212121',
     },
-    type: 'dark'
+    error: {
+      main: '#d32f2f',
+    },
+    divider: '#000000',
+    info: {
+      main: '#2196f3',
+    },
+    background: {
+      default: '#121212',
+      paper: '#1b1b1b',
+    },
+  },
+  typography: {
+    fontFamily: 'Roboto Condensed',
+    h5: {
+      fontWeight: 600
+    },
+    h3: {
+      fontWeight: 600
+    },
+    h6: {
+      fontWeight: 600
+    },
   },
 });
 
