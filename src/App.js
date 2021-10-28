@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/header/Header';
+import News from './components/news/News';
 import '@fontsource/roboto';
 import {
   BrowserRouter as Router,
@@ -14,9 +15,10 @@ function App() {
       <Header />
       <Router>
         <Switch>
-          {/* <Route path="/">
-            <Home />
+          <Route path="/">
+            <News />
           </Route>
+          {/* 
           <Route path="/about">
             <About />
           </Route> */}
