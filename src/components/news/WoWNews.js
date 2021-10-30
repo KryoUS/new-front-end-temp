@@ -24,7 +24,7 @@ export default class WoWNews extends Component {
         return (
             this.state.breakingNews.length >= 1 ?
                 this.state.breakingNews.map(obj => {
-                    return <Typography key={`wownews${obj.epoch_datetime}`} variant={'body1'}>{moment(obj.created_at).format('MMMM Do YYYY')} - {obj.alert}.</Typography>
+                    return <Typography key={`wownews${obj.epoch_datetime}`} variant={'body1'}>{moment(obj.created_at).format('MMMM Do YYYY')} - "{obj.alert}."</Typography>
                 })
                 :
                 <CircularProgress />
