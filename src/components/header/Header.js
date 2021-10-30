@@ -20,9 +20,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
+import MythicAffixes from './MythicPlus/MythicAffixes';
 import { ReactComponent as DiscordIcon } from '../icons/Discord-Logo-White.svg';
 import { ReactComponent as ComplexityLogo } from '../icons/complexityMoose.svg';
 import Discord from './Discord';
+import AffixSchedule from './MythicPlus/AffixSchedule';
 import RealmStatus from './RealmStatus';
 import TokenPrice from './TokenPrice';
 import Quotes from './Quotes';
@@ -33,7 +35,8 @@ class Header extends React.Component {
 
         this.state = {
             drawerOpen: false,
-            discordOpen: false
+            discordOpen: false,
+            affixesOpen: false
         }
     }
 
@@ -50,6 +53,12 @@ class Header extends React.Component {
     discordToggle =() => {
         this.setState(prevState => ({
             discordOpen: !prevState.discordOpen
+        }));
+    }
+
+    affixesToggle =() => {
+        this.setState(prevState => ({
+            affixesOpen: !prevState.affixesOpen
         }));
     }
 
@@ -76,15 +85,16 @@ class Header extends React.Component {
                     </Hidden>
                     <Hidden mdDown> {/* DESKTOP ONLY */}
                         <Grid container>
-                            <Grid item xs={7} style={{display: "flex", justifyContent: "flex-start"}}>
+                            <Grid item xs={6} style={{display: "flex", justifyContent: "flex-start"}}>
                                 <Quotes />
                             </Grid>
-                            <Grid container spacing={2} item xs={5} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <Grid container spacing={2} item xs={6} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                 <Grid item xs={3} container spacing={2} style={{display: "flex", justifyContent: "space-evenly", alignItems: "center"}}>
                                     <RealmStatus />
                                 </Grid>
                                 <Grid item>
                                     <Button 
+                                    disabled
                                     variant="text" 
                                     size="medium"
                                     startIcon={<Info />}>
@@ -94,10 +104,12 @@ class Header extends React.Component {
                                 <Grid item>
                                     <Button 
                                     variant="text" 
-                                    size="medium"
+                                    size="small"
+                                    onClick={() => this.affixesToggle()}
                                     startIcon={<DateRange />}>
                                         Mythic+ Affixes
                                     </Button>
+                                    <MythicAffixes iconHW={16} iconSize={'small'} />
                                 </Grid>
                                 <Grid item>
                                     <TokenPrice />
@@ -212,19 +224,27 @@ class Header extends React.Component {
                             </ListItemIcon>
                             <ListItemText primary="Class Info" />
                         </ListItem>
-                        <ListItem button key="mythicAffix">
+                        <ListItem button key="mythicAffix" onClick={() => this.affixesToggle()}>
                             <ListItemIcon>
                                 <DateRange />
                             </ListItemIcon>
                             <ListItemText primary="Mythic+ Affixes" />
                         </ListItem>
+                        <ListItem>
+                            
+                                <MythicAffixes iconHW={30} iconSize={'small'}/>
+                            
+                        </ListItem>
                         <Divider />
                         <ListItem>
-                            <TokenPrice />
+                            <Container>
+                                <TokenPrice />
+                            </Container>
                         </ListItem>
                     </List>
                 </Drawer>
                 <Discord discordOpen={this.state.discordOpen} discordToggle={this.discordToggle}/>
+                <AffixSchedule scheduleOpen={this.state.affixesOpen} scheduleToggle={this.affixesToggle}/>
             </Appbar>
         )
     }
