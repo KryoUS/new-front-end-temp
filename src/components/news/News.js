@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import WoWNews from './WoWNews';
-import { Box, Grid, Card, CardMedia, CardContent, Typography, CardActions, Button, Hidden, Paper } from '@material-ui/core';
+import { Box, Grid, Card, CardMedia, CardContent, Typography, CardActions, Button, Hidden, CircularProgress, Divider } from '@material-ui/core';
 
 export default class News extends React.Component{
     constructor() {
@@ -55,7 +55,7 @@ export default class News extends React.Component{
                                                 <Typography variant="h5" component="div" color="secondary" style={{textAlign: "left"}}>{news.title}</Typography>
                                             </Grid>
                                             <Grid item>
-                                                <Typography variant="body1" component="div" color="textSecondary" style={{fontSize: 14, textAlign: "right"}}>{moment(Number(news.news_datetime)).format('MMMM Do YYYY, h:mm:ss a')}</Typography>
+                                                <Typography variant="body1" component="div" color="textSecondary" style={{fontSize: 14, textAlign: "right"}}>{moment(Number(news.news_datetime)).format('MMM. Do YYYY, h:mm:ssa')}</Typography>
                                             </Grid>
                                         </Grid>
                                         <Grid item xs>
@@ -68,7 +68,7 @@ export default class News extends React.Component{
                                 </Grid>
                             ))
                             :
-                            null
+                            <Grid item xs><CircularProgress color="secondary" /></Grid>
                         }
                     </Grid>
                 </Hidden>
@@ -77,8 +77,8 @@ export default class News extends React.Component{
                         {   this.state.news
                             ?
                             this.state.news.map(news => (
-                                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                                    <Card key={news.id}>
+                                <Grid key={`mobile${news.id}`} item xs={12} sm={6} md={4} lg={3} xl={2}>
+                                    <Card>
                                         <CardMedia 
                                         component="img" 
                                         height="140" 
