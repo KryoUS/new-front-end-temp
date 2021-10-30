@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/header/Header';
 import News from './components/news/News';
+import Footer from './components/footer/Footer';
 import '@fontsource/roboto';
 import {
   BrowserRouter as Router,
@@ -24,7 +25,7 @@ function App() {
           </Route> */}
         </Switch>
       </Router>
-      
+      <Footer />      
     </div>
   );
 }
