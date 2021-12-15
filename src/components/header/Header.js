@@ -73,7 +73,6 @@ class Header extends React.Component {
                         <Container style={{display: "flex", justifyContent: "center", flexGrow: 1}}>
                             <ComplexityLogo style={{height: "41px", width: "41px"}} />
                             <Typography variant="h4" align="center">Complexity</Typography>
-                            {/* <img style={{height: "46px"}} src="https://res.cloudinary.com/complexityguild/image/upload/v1535585345/wow/logos/logov3.png" alt="Complexity Logo"/> */}
                         </Container>
                         <IconButton
                             onClick={this.handleMenu}
@@ -127,7 +126,7 @@ class Header extends React.Component {
                                 </Grid>
                                 <Grid item>
                                     <Typography variant="h3">Complexity</Typography>
-                                    {/* <img style={{height: "46px"}} src="https://res.cloudinary.com/complexityguild/image/upload/v1535585345/wow/logos/logov3.png" alt="Complexity Logo"/> */}
+                                    <Typography variant="body1">Thunderlord | US</Typography>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2} item xs={9} zeroMinWidth style={{display: "flex", justifyContent: "flex-end", alignItems: "center"}}>
