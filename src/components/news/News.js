@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import WoWNews from './WoWNews';
-import { Box, Grid, Card, CardMedia, CardContent, Typography, CardActions, Button, Hidden, CircularProgress, Divider } from '@material-ui/core';
+import { Box, Grid, Card, CardMedia, CardContent, Typography, CardActions, Button, Hidden, CircularProgress, Zoom } from '@material-ui/core';
 
 export default class News extends React.Component{
     constructor() {
@@ -38,34 +38,36 @@ export default class News extends React.Component{
                     <Grid container spacing={2} justifyContent="center">
                         {   this.state.news
                             ?
-                            this.state.news.map(news => (
-                                <Grid item xs={10} key={news.id} container spacing={2} style={{backgroundColor: "#1B1B1B", margin: "12px"}}>
-                                    <Grid item style={{margin: 0}}>
-                                        <img 
-                                        style={{height: 154, width: 380, objectFit: "cover"}} 
-                                        src={news.image ? news.image.replace('http:', 'https:') : 'https://res.cloudinary.com/complexityguild/image/upload/v1635415242/wow/backgrounds/shadowlands_icecrown.jpg'} 
-                                        onError={e => {
-                                            e.target.src = 'https://res.cloudinary.com/complexityguild/image/upload/v1635415242/wow/backgrounds/shadowlands_icecrown.jpg';
-                                        }}
-                                        />
-                                    </Grid>
-                                    <Grid item xs container direction="column" spacing={2}>
-                                        <Grid item xs container justifyContent="space-between" alignItems="center">
-                                            <Grid item>
-                                                <Typography variant="h5" component="div" color="secondary" style={{textAlign: "left"}}>{news.title}</Typography>
+                            this.state.news.map((news, index) => (
+                                <Zoom key={news.id} in={true} style={{transitionDelay: `${index*0.10}s`}} >
+                                    <Grid item xs={10} container spacing={2} style={{backgroundColor: "#1B1B1B", margin: "12px"}}>
+                                        <Grid item style={{margin: 0}}>
+                                            <img 
+                                            style={{height: 154, width: 380, objectFit: "cover"}} 
+                                            src={news.image ? news.image.replace('http:', 'https:') : 'https://res.cloudinary.com/complexityguild/image/upload/v1635415242/wow/backgrounds/shadowlands_icecrown.jpg'} 
+                                            onError={e => {
+                                                e.target.src = 'https://res.cloudinary.com/complexityguild/image/upload/v1635415242/wow/backgrounds/shadowlands_icecrown.jpg';
+                                            }}
+                                            />
+                                        </Grid>
+                                        <Grid item xs container direction="column" spacing={2}>
+                                            <Grid item xs container justifyContent="space-between" alignItems="center">
+                                                <Grid item>
+                                                    <Typography variant="h5" component="div" color="secondary" style={{textAlign: "left"}}>{news.title}</Typography>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Typography variant="body1" component="div" color="textSecondary" style={{fontSize: 14, textAlign: "right"}}>{moment(Number(news.news_datetime)).format('MMM. Do YYYY, h:mm:ssa')}</Typography>
+                                                </Grid>
                                             </Grid>
-                                            <Grid item>
-                                                <Typography variant="body1" component="div" color="textSecondary" style={{fontSize: 14, textAlign: "right"}}>{moment(Number(news.news_datetime)).format('MMM. Do YYYY, h:mm:ssa')}</Typography>
+                                            <Grid item xs>
+                                                <Typography gutterBottom variant="body1" color="textSecondary" style={{textAlign: "left"}}>{news.description}</Typography>
+                                            </Grid>
+                                            <Grid item xs>
+                                                <Button variant="contained" size="medium" color="secondary" width="100%" href={news.link} target="_blank" rel="noopener noreferrer">Read More on {news.source}</Button>
                                             </Grid>
                                         </Grid>
-                                        <Grid item xs>
-                                            <Typography gutterBottom variant="body1" color="textSecondary" style={{textAlign: "left"}}>{news.description}</Typography>
-                                        </Grid>
-                                        <Grid item xs>
-                                            <Button variant="contained" size="medium" color="secondary" width="100%" href={news.link} target="_blank" rel="noopener noreferrer">Read More on {news.source}</Button>
-                                        </Grid>
                                     </Grid>
-                                </Grid>
+                                </Zoom>
                             ))
                             :
                             <Grid item xs><CircularProgress color="secondary" /></Grid>
