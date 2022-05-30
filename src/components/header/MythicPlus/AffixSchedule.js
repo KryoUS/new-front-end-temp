@@ -1,8 +1,15 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { Container, Grid, Dialog, Paper, Typography } from '@material-ui/core';
 import moment from 'moment';
+
+let currentWeek = (moment().week() % 12) + 1; //Adjusted +1 due to M+ Season not starting is cadence with the actual week of the year.
+
+//Adjust for Tuesday through Saturday
+if (moment().weekday() >= 2) {
+    currentWeek = ((moment().week() + 1) % 12) + 1;
+}
 
 //TODO: This needs to be pulled from DB and not hard-coded
 const affixes = {
@@ -157,7 +164,7 @@ const schedule = [
         week: 9,
         baseAffix: 'Fortified',
         plusFour: 'Spiteful',
-        plusSeven: 'Grievous',
+        plusSeven: 'Necrotic',
         type: 'Encrypted'
     },
     {
@@ -171,7 +178,7 @@ const schedule = [
         week: 11,
         baseAffix: 'Fortified',
         plusFour: 'Sanguine',
-        plusSeven: 'Necrotic',
+        plusSeven: 'Grievous',
         type: 'Encrypted'
     },
     {
@@ -216,13 +223,14 @@ export default function AffixSchedule(props){
                             </Grid>
                         </Grid>
                         {schedule.map(obj => {
-                            const currentWeek = (moment().week() % 12) - 2 === obj.week;
-                            return <Grid key={`affixWeek${obj.week}`} item container style={{backgroundColor: `${currentWeek ? '#B388FF' : null}` }}> {/*Week*/}
+                            const isCurrentWeek = currentWeek === obj.week;
+
+                            return <Grid key={`affixWeek${obj.week}`} item container style={{backgroundColor: `${isCurrentWeek ? '#B388FF' : null}` }}> {/*Week*/}
                                 <Grid item xs={3}> {/*baseAffix*/}
                                     <Button 
                                     variant="text" 
                                     size="small"
-                                    style={{color: currentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
+                                    style={{color: isCurrentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
                                     href={`https://wowhead.com/affix=${affixes[obj.baseAffix].id}`} 
                                     data-wowhead={`affix=${affixes[obj.baseAffix].id}`}
                                     target="_blank" 
@@ -231,6 +239,7 @@ export default function AffixSchedule(props){
                                         <img
                                         style={{width: 14, height: 14}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.baseAffix].icon}.jpg`} 
+                                        alt={obj.baseAffix + ' Mythic Plus Affix'}
                                         onError={e => {
                                             e.target.src = 'https://render.worldofwarcraft.com/us/icons/56/inv_misc_questionmark.jpg';
                                         }}
@@ -243,7 +252,7 @@ export default function AffixSchedule(props){
                                     <Button 
                                     variant="text" 
                                     size="small"
-                                    style={{color: currentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
+                                    style={{color: isCurrentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
                                     href={`https://wowhead.com/affix=${affixes[obj.plusFour].id}`} 
                                     data-wowhead={`affix=${affixes[obj.plusFour].id}`}
                                     target="_blank" 
@@ -252,6 +261,7 @@ export default function AffixSchedule(props){
                                         <img 
                                         style={{width: 14, height: 14}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.plusFour].icon}.jpg`} 
+                                        alt={obj.plusFour + ' Mythic Plus Affix'}
                                         onError={e => {
                                             e.target.src = 'https://render.worldofwarcraft.com/us/icons/56/inv_misc_questionmark.jpg';
                                         }}
@@ -264,7 +274,7 @@ export default function AffixSchedule(props){
                                     <Button 
                                     variant="text" 
                                     size="small"
-                                    style={{color: currentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
+                                    style={{color: isCurrentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
                                     href={`https://wowhead.com/affix=${affixes[obj.plusSeven].id}`} 
                                     data-wowhead={`affix=${affixes[obj.plusSeven].id}`}
                                     target="_blank" 
@@ -273,6 +283,7 @@ export default function AffixSchedule(props){
                                         <img 
                                         style={{width: 14, height: 14}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.plusSeven].icon}.jpg`} 
+                                        alt={obj.plusSeven + ' Mythic Plus Affix'}
                                         onError={e => {
                                             e.target.src = 'https://render.worldofwarcraft.com/us/icons/56/inv_misc_questionmark.jpg';
                                         }}
@@ -285,7 +296,7 @@ export default function AffixSchedule(props){
                                     <Button 
                                     variant="text" 
                                     size="small"
-                                    style={{color: currentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
+                                    style={{color: isCurrentWeek ? 'black' : null, fontSize: window.innerWidth < 600 ? 10 : null}}
                                     href={`https://wowhead.com/affix=${affixes[obj.type].id}`} 
                                     data-wowhead={`affix=${affixes[obj.type].id}`}
                                     target="_blank" 
@@ -294,6 +305,7 @@ export default function AffixSchedule(props){
                                         <img 
                                         style={{width: 14, height: 14}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.type].icon}.jpg`} 
+                                        alt={obj.type + ' Mythic Plus Affix'}
                                         onError={e => {
                                             e.target.src = 'https://render.worldofwarcraft.com/us/icons/56/inv_misc_questionmark.jpg';
                                         }}
