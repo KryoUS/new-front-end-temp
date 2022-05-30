@@ -45,6 +45,7 @@ export default class News extends React.Component{
                                             <img 
                                             style={{height: 154, width: 380, objectFit: "cover"}} 
                                             src={news.image ? news.image.replace('http:', 'https:') : 'https://res.cloudinary.com/complexityguild/image/upload/v1635415242/wow/backgrounds/shadowlands_icecrown.jpg'} 
+                                            alt={news.title}
                                             onError={e => {
                                                 e.target.src = 'https://res.cloudinary.com/complexityguild/image/upload/v1635415242/wow/backgrounds/shadowlands_icecrown.jpg';
                                             }}
