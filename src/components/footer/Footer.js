@@ -1,10 +1,21 @@
 import React from 'react';
 import MythicAffixes from '../header/MythicPlus/MythicAffixes';
+import Discord from '../header/Discord';
 import { Grid, Typography, Button, Container, Divider, Box, Paper } from '@material-ui/core';
 
 export default class News extends React.Component{
     constructor() {
         super();
+
+        this.state = {
+            discordOpen: false,
+        }
+    }
+
+    discordToggle =() => {
+        this.setState(prevState => ({
+            discordOpen: !prevState.discordOpen
+        }));
     }
 
     render(){
@@ -67,6 +78,7 @@ export default class News extends React.Component{
                         </Grid>
                     </Box>
                 </Container>
+                <Discord discordOpen={this.state.discordOpen} discordToggle={this.discordToggle}/>
                 <Divider style={{marginTop: 12, marginBottom: 12}} />
                 <Container>
                     <Typography variant="caption" color="textSecondary">World of Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the U.S. and/or other countries. All other trademarks are the property of their respective owners.</Typography>
