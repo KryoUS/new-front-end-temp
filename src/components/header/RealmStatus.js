@@ -5,7 +5,6 @@ import CheckRounded from '@material-ui/icons/CheckRounded';
 import CheckCircle from '@material-ui/icons/CheckCircle';
 import ClearRounded from '@material-ui/icons/ClearRounded';
 import Error from '@material-ui/icons/Error';
-import Grid from '@material-ui/core/Grid';
 
 export default class RealmStatus extends React.Component{
     constructor(){
