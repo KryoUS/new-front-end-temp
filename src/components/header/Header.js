@@ -28,6 +28,7 @@ import AffixSchedule from './MythicPlus/AffixSchedule';
 import RealmStatus from './RealmStatus';
 import TokenPrice from './TokenPrice';
 import Quotes from './Quotes';
+import {Link} from 'react-router-dom';
 
 class Header extends React.Component {
     constructor() {
@@ -131,12 +132,12 @@ class Header extends React.Component {
                             </Grid>
                             <Grid container spacing={2} item xs={9} zeroMinWidth style={{display: "flex", justifyContent: "flex-end", alignItems: "center"}}>
                                 <Grid item>
-                                    <Button size="large">
+                                    <Button href="/" size="large">
                                         <Typography variant="h6">News</Typography>
                                     </Button>
                                 </Grid>
                                 <Grid item>
-                                    <Button size="large" disabled>
+                                    <Button href="/about" size="large">
                                         <Typography variant="h6">About</Typography>
                                     </Button>
                                 </Grid>
