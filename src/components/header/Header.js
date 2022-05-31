@@ -28,7 +28,7 @@ import AffixSchedule from './MythicPlus/AffixSchedule';
 import RealmStatus from './RealmStatus';
 import TokenPrice from './TokenPrice';
 import Quotes from './Quotes';
-import {Link} from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
 
 class Header extends React.Component {
     constructor() {
@@ -68,20 +68,26 @@ class Header extends React.Component {
             <Appbar position="sticky">
                 <Toolbar variant={"dense"} style={{backgroundColor: "#121212"}}>
                     <Hidden lgUp>   {/* MOBILE/TABLET ONLY */}
-                        <IconButton onClick={() => this.drawerToggle()} >
-                            <MenuIcon style={{fontSize: 48}} />
-                        </IconButton>
-                        <Container style={{display: "flex", justifyContent: "center", flexGrow: 1}}>
-                            <ComplexityLogo style={{height: "41px", width: "41px"}} />
-                            <Typography variant="h4" align="center">Complexity</Typography>
-                        </Container>
-                        <IconButton
-                            onClick={this.handleMenu}
-                            edge={'end'}
-                            disabled
-                        >
-                            <AccountCircle style={{fontSize: 46}} />
-                        </IconButton>
+                        <Grid container>
+                            <Grid item xs={2}>
+                                <IconButton onClick={() => this.drawerToggle()} >
+                                    <MenuIcon style={{fontSize: 48}} />
+                                </IconButton>
+                            </Grid>
+                            <Grid item xs={8} style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                    <ComplexityLogo style={{height: "41px", width: "41px", padding: '2px'}} />
+                                    <Typography variant="h4" align="center">Complexity</Typography>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <IconButton
+                                    onClick={this.handleMenu}
+                                    edge={'end'}
+                                    disabled
+                                >
+                                    <AccountCircle style={{fontSize: 46}} />
+                                </IconButton>
+                            </Grid>
+                        </Grid>
                     </Hidden>
                     <Hidden mdDown> {/* DESKTOP ONLY */}
                         <Grid container>
@@ -121,23 +127,23 @@ class Header extends React.Component {
                 <Hidden mdDown> {/* DESKTOP ONLY */}
                     <Toolbar>
                         <Grid container align-items={"center"}>
-                            <Grid container item xs={3} zeroMinWidth style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                                <Grid item>
+                            <Grid container item xs={2} zeroMinWidth style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                <Grid item xs>
                                     <ComplexityLogo style={{height: "80px", width: "80px"}} />
                                 </Grid>
-                                <Grid item>
+                                <Grid item xs>
                                     <Typography variant="h3">Complexity</Typography>
                                     <Typography variant="body1">Thunderlord | US</Typography>
                                 </Grid>
                             </Grid>
-                            <Grid container spacing={2} item xs={9} zeroMinWidth style={{display: "flex", justifyContent: "flex-end", alignItems: "center"}}>
+                            <Grid container spacing={2} item xs={10} zeroMinWidth style={{display: "flex", justifyContent: "flex-end", alignItems: "center"}}>
                                 <Grid item>
-                                    <Button href="/" size="large">
+                                    <Button component={RouterLink} to={"/"} size="large">
                                         <Typography variant="h6">News</Typography>
                                     </Button>
                                 </Grid>
                                 <Grid item>
-                                    <Button href="/about" size="large">
+                                    <Button component={RouterLink} to={"/about"} size="large">
                                         <Typography variant="h6">About</Typography>
                                     </Button>
                                 </Grid>
@@ -193,13 +199,13 @@ class Header extends React.Component {
                             <RealmStatus />
                         </ListItem>
                         <Divider />
-                        <ListItem button key="home">
+                        <ListItem button key="news" component={RouterLink} to={"/"}>
                             <ListItemIcon>
                                 <Home />
                             </ListItemIcon>
-                            <ListItemText primary="Home" />
+                            <ListItemText primary="News" />
                         </ListItem>
-                        <ListItem button key="about">
+                        <ListItem button key="about" component={RouterLink} to={"/about"}>
                             <ListItemIcon>
                                 <Info />
                             </ListItemIcon>
@@ -211,14 +217,14 @@ class Header extends React.Component {
                             </ListItemIcon>
                             <ListItemText primary="Discord" />
                         </ListItem>
-                        <ListItem button key="simulations">
+                        <ListItem button key="simulations" disabled>
                             <ListItemIcon>
                                 <Assessment />
                             </ListItemIcon>
                             <ListItemText primary="Simulations" />
                         </ListItem>
                         <Divider />
-                        <ListItem button key="classInfo">
+                        <ListItem button key="classInfo" disabled>
                             <ListItemIcon>
                                 <Class />
                             </ListItemIcon>
