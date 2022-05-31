@@ -196,36 +196,38 @@ export default function AffixSchedule(props){
         <Dialog
         open={props.scheduleOpen}
         onClose={props.scheduleToggle}
+        fullWidth={true}
+        maxWidth={window.innerWidth < 600 ? false : 'sm'}
         
         >
-            <Paper style={{padding: 12}}>
+            <Paper>
                     <Grid container direction='column'> {/*Calendar*/}
-                        <Grid item container>
+                        <Grid item xs container>
                             <Grid item xs={3}>
                                 <Container>
-                                    <Typography>+2</Typography>
+                                    <Typography variant='caption'>+2</Typography>
                                 </Container>
                             </Grid>
                             <Grid item xs={3}>
                                 <Container>
-                                    <Typography>+4</Typography>
+                                    <Typography variant='caption'>+4</Typography>
                                 </Container>
                             </Grid>
                             <Grid item xs={3}>
                                 <Container>
-                                    <Typography>+7</Typography>
+                                    <Typography variant='caption'>+7</Typography>
                                 </Container>
                             </Grid>
                             <Grid item xs={3}>
                                 <Container>
-                                    <Typography>Seasonal</Typography>
+                                    <Typography variant='caption'>Seasonal</Typography>
                                 </Container>
                             </Grid>
                         </Grid>
                         {schedule.map(obj => {
                             const isCurrentWeek = currentWeek === obj.week;
 
-                            return <Grid key={`affixWeek${obj.week}`} item container style={{backgroundColor: `${isCurrentWeek ? '#B388FF' : null}` }}> {/*Week*/}
+                            return <Grid key={`affixWeek${obj.week}`} item xs container style={{backgroundColor: `${isCurrentWeek ? '#772CE8' : null}` }}> {/*Week*/}
                                 <Grid item xs={3}> {/*baseAffix*/}
                                     <Button 
                                     variant="text" 
@@ -237,7 +239,7 @@ export default function AffixSchedule(props){
                                     rel="noopener noreferrer" 
                                     startIcon={
                                         <img
-                                        style={{width: 14, height: 14}} 
+                                        style={{width: 12, height: 12}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.baseAffix].icon}.jpg`} 
                                         alt={obj.baseAffix + ' Mythic Plus Affix'}
                                         onError={e => {
@@ -259,7 +261,7 @@ export default function AffixSchedule(props){
                                     rel="noopener noreferrer" 
                                     startIcon={
                                         <img 
-                                        style={{width: 14, height: 14}} 
+                                        style={{width: 12, height: 12}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.plusFour].icon}.jpg`} 
                                         alt={obj.plusFour + ' Mythic Plus Affix'}
                                         onError={e => {
@@ -281,7 +283,7 @@ export default function AffixSchedule(props){
                                     rel="noopener noreferrer" 
                                     startIcon={
                                         <img 
-                                        style={{width: 14, height: 14}} 
+                                        style={{width: 12, height: 12}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.plusSeven].icon}.jpg`} 
                                         alt={obj.plusSeven + ' Mythic Plus Affix'}
                                         onError={e => {
@@ -303,7 +305,7 @@ export default function AffixSchedule(props){
                                     rel="noopener noreferrer" 
                                     startIcon={
                                         <img 
-                                        style={{width: 14, height: 14}} 
+                                        style={{width: 12, height: 12}} 
                                         src={`https://render.worldofwarcraft.com/us/icons/56/${affixes[obj.type].icon}.jpg`} 
                                         alt={obj.type + ' Mythic Plus Affix'}
                                         onError={e => {
