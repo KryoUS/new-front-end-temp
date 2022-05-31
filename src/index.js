@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -39,12 +40,17 @@ const theme = createTheme({
     h6: {
       fontWeight: 600
     },
+    body1: {
+      fontSize: 20
+    }
   },
 });
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
-      <App />
+      <HashRouter>
+        <App />
+      </HashRouter>
     </ThemeProvider>,
   document.getElementById('root')
 );
