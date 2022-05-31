@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -14,8 +14,8 @@ const theme = createTheme({
       main: '#1a1a1a',
     },
     secondary: {
-      main: '#b388ff',
-      contrastText: '#212121',
+      main: '#772CE8',
+      contrastText: '#000000',
     },
     error: {
       main: '#d32f2f',
@@ -48,9 +48,9 @@ const theme = createTheme({
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
-      <HashRouter>
+      <Router>
         <App />
-      </HashRouter>
+      </Router>
     </ThemeProvider>,
   document.getElementById('root')
 );
