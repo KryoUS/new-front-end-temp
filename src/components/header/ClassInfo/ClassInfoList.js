@@ -46,16 +46,21 @@ class ClassInfoList extends React.Component{
                 </ListSubheader>
             }
             >
-                {this.state.classObj.specs ? <ListItem button component="a" href={this.state.classObj.discord} target="_blank" rel="noopener noreferrer">
-                    <ListItemIcon style={{minWidth: "26px"}}>
+                {this.state.classObj.specs ? <ListItem button component="a" href={this.state.classObj.discord} target="_blank" rel="noopener noreferrer" dense>
+                    <ListItemIcon style={{minWidth: "36px"}}>
                         <DiscordIcon style={{width: "22px", height: "22px"}} />
                     </ListItemIcon>
                     <ListItemText primary={`Class Discord`} />
                 </ListItem>
                 : null }
                 {this.state.classObj.specs ? this.state.classObj.specs.map((obj, index) => {
-                    return <div key={obj.name + " Class Info Spec"} onMouseEnter={() => this.handleClick(index)} onMouseLeave={() => this.handleClick(index)} >
-                        <ListItem button>
+                    return <div 
+                    key={obj.name + " Class Info Spec"} 
+                    onMouseEnter={() => this.handleClick(index)} 
+                    onMouseLeave={() => this.handleClick(index)} 
+                    style={{width: "100%"}}
+                    >
+                        <ListItem button dense>
                             <ListItemIcon style={{minWidth: "36px"}}>
                                 <img 
                                 style={{width: "24px", height: "24px"}}
