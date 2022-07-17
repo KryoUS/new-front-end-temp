@@ -29,6 +29,7 @@ import RealmStatus from './RealmStatus';
 import TokenPrice from './TokenPrice';
 import Quotes from './Quotes';
 import {Link as RouterLink} from 'react-router-dom';
+import ClassInfo from './ClassInfo/ClassInfo';
 
 class Header extends React.Component {
     constructor() {
@@ -37,7 +38,8 @@ class Header extends React.Component {
         this.state = {
             drawerOpen: false,
             discordOpen: false,
-            affixesOpen: false
+            affixesOpen: false,
+            classDrawerOpen: false
         }
     }
 
@@ -48,6 +50,12 @@ class Header extends React.Component {
     drawerToggle = () => {
         this.setState(prevState => ({
             drawerOpen: !prevState.drawerOpen
+        }));
+    }
+
+    classDrawerToggle = () => {
+        this.setState(prevState => ({
+            classDrawerOpen: !prevState.classDrawerOpen
         }));
     }
 
@@ -100,9 +108,9 @@ class Header extends React.Component {
                                 </Grid>
                                 <Grid item>
                                     <Button 
-                                    disabled
                                     variant="text" 
                                     size="medium"
+                                    onClick={() => this.classDrawerToggle()}
                                     startIcon={<Info />}>
                                         Class Info
                                     </Button>
@@ -224,7 +232,7 @@ class Header extends React.Component {
                             <ListItemText primary="Simulations" />
                         </ListItem>
                         <Divider />
-                        <ListItem button key="classInfo" disabled>
+                        <ListItem button key="classInfo" onClick={() => this.classDrawerToggle()}>
                             <ListItemIcon>
                                 <Class />
                             </ListItemIcon>
@@ -248,6 +256,13 @@ class Header extends React.Component {
                             </Container>
                         </ListItem>
                     </List>
+                </Drawer>
+                <Drawer 
+                anchor="top" 
+                open={this.state.classDrawerOpen} 
+                onClose={this.classDrawerToggle}
+                >
+                    <ClassInfo />
                 </Drawer>
                 <Discord discordOpen={this.state.discordOpen} discordToggle={this.discordToggle}/>
                 <AffixSchedule scheduleOpen={this.state.affixesOpen} scheduleToggle={this.affixesToggle}/>
