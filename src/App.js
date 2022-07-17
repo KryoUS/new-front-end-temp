@@ -5,7 +5,6 @@ import Footer from './components/footer/Footer';
 import About from './components/about/About';
 import '@fontsource/roboto';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   // Link
