@@ -56,8 +56,8 @@ class ClassInfoList extends React.Component{
                 {this.state.classObj.specs ? this.state.classObj.specs.map((obj, index) => {
                     return <div 
                     key={obj.name + " Class Info Spec"} 
-                    onMouseEnter={() => this.handleClick(index)} 
-                    onMouseLeave={() => this.handleClick(index)} 
+                    onMouseEnter={() => this.handleClick(index, true)} 
+                    onMouseLeave={() => this.handleClick(index, false)} 
                     style={{width: "100%"}}
                     >
                         <ListItem button dense>
