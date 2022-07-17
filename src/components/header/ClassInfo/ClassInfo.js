@@ -6,7 +6,7 @@ import ClassInfoData from './ClassInfoData';
 export default function ClassInfo(props){
 
     return(
-        <Paper style={{maxHeight: "90vh"}}>
+        <Paper style={{maxHeight: "95vh"}}>
             <Container>
                 <Box sx={{padding: 12}}>
                     <Grid container spacing={4} style={{ justifyContent: "center" }}>
